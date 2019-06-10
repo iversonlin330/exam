@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="zh-tw">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Exam</title>
-		<script src="{{ asset('js/app.js') }}" defer></script>
+		<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -13,14 +15,21 @@
         <style>
 		body{
 			font-family: Microsoft JhengHei;
-		}
-		.container{
 			width:100%;
 			height:100%;
 			background: -webkit-linear-gradient(#FFF5CF,#FFE38F);
 			background: -o-linear-gradient(#FFF5CF,#FFE38F);
 			background: -moz-linear-gradient(#FFF5CF,#FFE38F);
 			background: linear-gradient(#FFF5CF,#FFE38F);
+		}
+		.container{
+		    margin-top: 40px;
+			<!-- width:100%; -->
+			<!-- height:100%; -->
+			<!-- background: -webkit-linear-gradient(#FFF5CF,#FFE38F); -->
+			<!-- background: -o-linear-gradient(#FFF5CF,#FFE38F); -->
+			<!-- background: -moz-linear-gradient(#FFF5CF,#FFE38F); -->
+			<!-- background: linear-gradient(#FFF5CF,#FFE38F); -->
 		}
 		.left_side{
 			width:85px;
@@ -130,7 +139,7 @@
 			//display: flex;
 		}
 		
-		.main_view_content > div{
+		#app .main_view_content > div{
 			display:none;
 		}
 		
@@ -351,6 +360,13 @@
 			margin-bottom:20px;
 		}
 		
+		#main_7{
+			width:810px;
+			//height:640px;
+			height:685px;
+			background-color: #62828D;
+		}
+		
 		hr.style-one {
 			border: 0;
 			height: 1px;
@@ -397,7 +413,7 @@
 		
 		.question_each_content{
 			margin:15px;
-			display: flex;
+			display: flow-root;
 		}
 		.question_each_title{
 			font-size:14px;
@@ -464,7 +480,7 @@
 		#main_6_modal{
 			display:none;
 			width:450px;
-			height:234px;
+			height:275px;
 			border: solid 5px #ffc36a;
 			background-color: #ffffff;
 			border-radius: 20px;
@@ -493,7 +509,38 @@
 			margin-bottom:10px;
 		}
 		
-		#no_answer_modal{
+		#main_6_modal .btn{
+			text-align:center;
+		}
+		
+		#main_6_modal .btn button{
+			width:80px;
+			height:30px;
+			margin-bottom:30px;
+			font-size:14px;
+			border-radius: 5px;
+			box-shadow: 0 2px 0 0 #8b572a;
+			background-color: #ffc36a;
+		}
+		
+		#q_20 table{
+			width:240px;
+			font-size: 12px
+			letter-spacing:1;
+			//border: solid 1px #979797;
+			border-collapse: collapse;
+			margin-bottom: 10px;
+		}
+		
+		#q_20 table td{
+			border: solid 1px #979797;
+		}
+		
+		#q_20 textarea{
+			width:60px
+		}
+		
+		.modal {
 			display:none;
 			width:441px;
 			height:177px;
@@ -510,18 +557,96 @@
 			line-height: 1.4;
 			text-align: center;
 		}
-		#no_answer_modal div{
+		.modal div{
 			margin-top: 50px;
 			margin-bottom: 21px;
 		}
 		
-		#no_answer_modal button{
+		.modal button{
 			width:150px;
 			height:30px;
 			font-size: 14px;
 			border-radius: 5px;
 			box-shadow: 0 2px 0 0 #8b572a;
 			background-color: #ffc36a;
+		}
+		.modal-bg{
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			background-color: rgba(92,92,92,0.4);
+			//background-color:#5C5C5C;
+			z-index: 10;
+			display: none;
+			//opacity: 0.4;
+		}
+		
+		#final{
+			//display:none;
+		}
+		
+		#final .main_view{
+			width:1080px;
+			height:720px;
+			margin-left: 180px;
+		}
+		
+		#final .main_view_header{
+			width:1050px;
+			height:65px;
+		}
+		
+		#final .main_view_content{
+			width:1050px;
+		}
+		
+		#final .main_view_content > label{
+			float: left;
+			margin-top:80px;
+			margin-left:116px;
+		}
+		
+		#final .timer{
+			width: 90px;
+			margin: 30px 116px 15px 0px;
+			display: flex;
+			float: right;
+			font-size:16px;
+			font-family: MicrosoftJhengHeiBold;
+			color: #323232;
+		}
+		
+		.final_table > table{
+			margin:110px 116px 40px 116px;
+			border: solid 1px #979797;
+			border-collapse: collapse;
+		}
+		
+		.final_table th{
+			background-color: #d0d0d0;
+			border: solid 1px #979797;
+			font-size:16px;
+			font-style: MicrosoftJhengHeiBold;
+			color: #323232;
+			letter-spacing:1.5px
+			line-height:1.4;
+		}
+		
+		.final_table td{
+			background-color: #f9f9f9;
+			border: solid 1px #979797;
+			font-size:16px;
+			color: #323232;
+			letter-spacing:1.5px;
+		}
+		
+		#final button{
+			font-size:18px;
+			border-radius: 5px;
+			box-shadow: 0 2px 0 0 #8b572a;
+			background-color: #ffc36a;
+			margin-bottom:50px;
 		}
         </style>
     </head>
@@ -577,7 +702,7 @@
 					<div id="main_2" class="main_view_content_search">
 						<img src="/images/PIRLS_logo.png">
 						<p>數位學習搜尋器</p>
-						<div class="main_view_content_search_bar"><img src="/images/icon-search.png" onclick="main_change(3);question_show(1);"></div>
+						<div class="main_view_content_search_bar"><img src="/images/icon-search.png" onclick=""></div>
 						<div class="main_view_content_search_btn"><span>數位閱讀學習平台</span></div>
 					</div>
 					<div id="main_3">
@@ -587,7 +712,7 @@
 						</div>
 						<div class="main_3_2">
 							<div class="main_3_2_block">
-								<div class="main_3_2_title" href="#" onclick="question_show('1_1');tab_change(2);">
+								<div class="main_3_2_title" href="#" onclick="answer_1('A');">
 									花蓮原住民文創商城 - inmall.com.tw
 								</div>
 								<div class="main_3_2_description">
@@ -596,7 +721,7 @@
 								</div>
 							</div>
 							<div class="main_3_2_block">
-								<div class="main_3_2_title" onclick="question_show('1_1');tab_change(2);">
+								<div class="main_3_2_title" onclick="answer_1('B');">
 									原住民部落 - 九族文化村連結日月潭，歡樂無限大大大
 								</div>
 								<div class="main_3_2_description">
@@ -605,7 +730,7 @@
 								</div>
 							</div>
 							<div class="main_3_2_block">
-								<div class="main_3_2_title" onclick="question_show('1_1');tab_change(2);">
+								<div class="main_3_2_title" onclick="answer_1('C');">
 									原住民族委員會全球資訊網原住民族16族簡介
 								</div>
 								<div class="main_3_2_description">
@@ -614,7 +739,7 @@
 								</div>
 							</div>
 							<div class="main_3_2_block">
-								<div class="main_3_2_title" onclick="question_show('1_1');tab_change(2);">
+								<div class="main_3_2_title" onclick="answer_1('D');">
 									原住民文化－捨棄、傳承與借鑒- 中時電子報
 								</div>
 								<div class="main_3_2_description">
@@ -675,6 +800,9 @@
 	</div>
 	<div id="main_6_modal_right">祭典期間，人或是器物、房屋、進出車輛都必須綁上芒草，這具有避邪的作用，外族參觀者必須由族內朱姓氏族的成員協助繫綁，祭典結束前不可拿下。以前曾有記者未在攝影機上繫上芒草，結果每捲帶子都曝光，至今仍廣泛為人談起。
 	</div>
+	<div class="btn">
+	<button onclick="$('#main_6_modal').hide()">關閉</button>
+	</div>
 </div>
 							</div>
 						</div>
@@ -711,6 +839,33 @@
 							</div>
 						</div>
 					</div>
+					<div id="main_7">
+						<div class="main_6_header">
+							<img src="/images/Bunun-banner.png">
+						</div>
+						<!--div class="main_6_tab">
+							<div id="main_6_tab_1" onclick="main_6_tab_change(1)">矮靈祭由來</div>
+							<div id="main_6_tab_2" onclick="main_6_tab_change(2)">矮靈祭儀式</div>
+							<div id="main_6_tab_3" onclick="main_6_tab_change(3)">祭典中的器物</div>
+							<div id="main_6_tab_4" onclick="main_6_tab_change(4)">矮靈祭新聞報導</div>
+						</div-->
+
+						<div id="main_7_1" class="main_6_content">
+							<div class="main_6_content_title">
+								射日英雄
+							</div>
+							<br>
+							<div class="main_6_content_content">
+　　以前，天上有兩個太陽，一個太陽下山時，另一個就會昇起，所以沒有白天和黑夜的分別，許多族人活活被曬死。頭目很生氣，派了勇士帶著弓箭和糧食，各背一個小孩，向東出發，去找太陽報仇。<br><br>
+
+　　勇士必勇沿途播種果樹籽，讓小孩長大時，認得回家的路。翻越好多座山，終於有一天，他們來到太陽的住所，於是拿起弓箭射太陽，被射到的太陽一隻手壓著眼睛，另一隻手捉住他們，很生氣的問：「為什麼射傷我的眼睛？」他們回答：「你曬死了族人，我們要報仇。」太陽嘆氣說：「忘恩負義的東西，你們的生活都依靠我，但從來沒有感謝，才會被曬死！但你們也受夠苦了，以後我就變成月亮，告訴族人吧！在月圓時祭拜我，穀物一定豐收，人口興旺，現在我給你們小米，播種後，可祭祀。」相互告別後，他們循著當初種的果樹路回去。<br><br>
+
+　　回到家鄉，必勇已成駝背的老人，兒子也滿頭白髮。他們告訴族人太陽交待的事。從此以後，布農族人播種小米，依據月亮的圓缺來耕種和舉行祭祀。<br><br>
+
+(文字參考原住民族委員會兒童版內容並略加修飾https://reurl.cc/Z4qLM )
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="question">
@@ -743,6 +898,7 @@
 							<div class="question_each_content_text">
 								<div class="question_each_content_text_position">學生</div>
 								<div class="question_each_content_text_order">點選最可以說明16族原住民文化的網頁</div>
+								<input name="answer[1]" value="" hidden>
 							</div>
 						</div>
 						<hr class="style-one" />
@@ -776,7 +932,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[2]" value="B">排灣族</div>
 									<div class="answer_choose"><input type="radio" name="answer[2]" value="C">賽夏族</div>
 									<div class="answer_choose"><input type="radio" name="answer[2]" value="D">卑南族</div>
-									<div class="save_btn" onclick="question_show('2_1');tab_change(4);">儲存</div>
+									<div class="save_btn" onclick="save_answer(2);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -791,7 +947,7 @@
 							</div>
 							<div class="question_each_content_text">
 								<div class="question_each_content_text_position">老師</div>
-								<div class="question_each_content_text_descrition">接下來，請點選以下連結<span class="question_each_content_text_link" onclick="main_6_tab_change(1);question_show(3)">「矮靈祭的由來」</span>，以瞭解更多原住民傳統文化的訊息。</div>
+								<div class="question_each_content_text_descrition">接下來，請點選以下連結<span class="question_each_content_text_link" onclick="tab_change(4);main_6_tab_change(1);question_show(3)">「矮靈祭的由來」</span>，以瞭解更多原住民傳統文化的訊息。</div>
 							</div>
 						</div>
 						<hr class="style-one" />
@@ -811,7 +967,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[3]" value="B">布農族</div>
 									<div class="answer_choose"><input type="radio" name="answer[3]" value="C">賽夏族</div>
 									<div class="answer_choose"><input type="radio" name="answer[3]" value="D">泰雅族</div>
-									<div class="save_btn" onclick="question_show(4)">儲存</div>
+									<div class="save_btn" onclick="save_answer(3);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -832,7 +988,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[4]" value="B">捕魚</div>
 									<div class="answer_choose"><input type="radio" name="answer[4]" value="C">喝酒</div>
 									<div class="answer_choose"><input type="radio" name="answer[4]" value="D">農耕技巧</div>
-									<div class="save_btn" onclick="question_show(5)">儲存</div>
+									<div class="save_btn" onclick="save_answer(4);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -853,7 +1009,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[5]" value="B">淹死</div>
 									<div class="answer_choose"><input type="radio" name="answer[5]" value="C">疾病</div>
 									<div class="answer_choose"><input type="radio" name="answer[5]" value="D">太重</div>
-									<div class="save_btn" onclick="question_show(6)">儲存</div>
+									<div class="save_btn" onclick="save_answer(5);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -874,7 +1030,7 @@
 								<textarea  name="answer[6][1]" ></textarea>
 								<div>塗上泥巴原因：</div>
 								<textarea  name="answer[6][2]" ></textarea>
-								<div class="save_btn" onclick="question_show(7)">儲存</div>
+								<div class="save_btn" onclick="save_answer(6);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -892,7 +1048,7 @@
 								<div class="question_each_content_text_position">學生</div>
 								<div class="question_each_content_text_descrition">
 									<textarea  name="answer[7]" ></textarea>
-									<div class="save_btn" onclick="question_show(8)">儲存</div>
+									<div class="save_btn" onclick="save_answer(7);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -913,7 +1069,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[8]" value="B">慶祝豐收，向天祈福</div>
 									<div class="answer_choose"><input type="radio" name="answer[8]" value="C">呼喚矮靈，重回部落</div>
 									<div class="answer_choose"><input type="radio" name="answer[8]" value="D">團結內部，族人同歡</div>
-									<div class="save_btn" onclick="question_show('8_1')">儲存</div>
+									<div class="save_btn" onclick="save_answer(8);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -952,7 +1108,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[9]" value="B">丙甲乙</div>
 									<div class="answer_choose"><input type="radio" name="answer[9]" value="C">乙丙甲</div>
 									<div class="answer_choose"><input type="radio" name="answer[9]" value="D">丙乙甲</div>
-									<div class="save_btn" onclick="question_show(10)">儲存</div>
+									<div class="save_btn" onclick="save_answer(9);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -973,7 +1129,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[10]" value="B">端午節的划龍舟</div>
 									<div class="answer_choose"><input type="radio" name="answer[10]" value="C">中元節的普渡</div>
 									<div class="answer_choose"><input type="radio" name="answer[10]" value="D">中秋節的賞月</div>
-									<div class="save_btn" onclick="question_show(11)">儲存</div>
+									<div class="save_btn" onclick="save_answer(10);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -994,7 +1150,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[11]" value="B">「矮靈祭」每年都舉辦</div>
 									<div class="answer_choose"><input type="radio" name="answer[11]" value="C">「矮靈祭」時外人可自行配戴芒草結</div>
 									<div class="answer_choose"><input type="radio" name="answer[11]" value="D">「矮靈祭」每十年有一次大祭</div>
-									<div class="save_btn" onclick="question_show('11_1');">儲存</div>
+									<div class="save_btn" onclick="save_answer(11);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -1030,7 +1186,7 @@
 									<textarea  name="answer[12][1]" ></textarea>
 									<div>臀鈴：</div>
 									<textarea  name="answer[12][2]" ></textarea>
-									<div class="save_btn" onclick="question_show('12_1');">儲存</div>
+									<div class="save_btn" onclick="save_answer(12);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -1063,7 +1219,7 @@
 								<div class="question_each_content_text_position">學生</div>
 								<div class="question_each_content_text_descrition">
 									<textarea  name="answer[13]" ></textarea>
-									<div class="save_btn" onclick="question_show('14');">儲存</div>
+									<div class="save_btn" onclick="save_answer(13);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -1084,7 +1240,7 @@
 									<div class="answer_choose"><input type="radio" name="answer[14]" value="B">莊重</div>
 									<div class="answer_choose"><input type="radio" name="answer[14]" value="C">慶祝</div>
 									<div class="answer_choose"><input type="radio" name="answer[14]" value="D">悲傷</div>
-									<div class="save_btn" onclick="question_show('15');">儲存</div>
+									<div class="save_btn" onclick="save_answer(14);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -1105,7 +1261,7 @@
 									<textarea  name="answer[15][1]" ></textarea>
 									<div>不尊重：</div>
 									<textarea  name="answer[15][2]" ></textarea>
-									<div class="save_btn" onclick="question_show('16');">儲存</div>
+									<div class="save_btn" onclick="save_answer(15);">儲存</div>
 								</div>
 							</div>
 						</div>
@@ -1125,8 +1281,176 @@
 									<div class="answer_choose"><input type="radio" name="answer[16][1]" value="贊成">贊成</div>
 									<div class="answer_choose"><input type="radio" name="answer[16][1]" value="不贊成">不贊成</div>
 									<textarea  name="answer[16][2]" ></textarea>
-									<div class="save_btn" onclick="question_show('16_1');">儲存</div>
+									<div class="save_btn" onclick="save_answer(16);">儲存</div>
 								</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_16_1" class="question_each">
+						<div class="question_each_title">
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/techer-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">老師</div>
+								<div class="question_each_content_text_descrition">除了矮靈祭外，來看看布農族的神話傳說，點選下面的連結—<span class="question_each_content_text_link" onclick="question_show(17);tab_change(5);question_no_change(17)">「布農族-射日英雄」</span>。</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_17" class="question_each">
+						<div class="question_each_title">
+							17. 布農族頭目為什麼要派勇士出發找太陽?
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/student-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">學生</div>
+								<div class="question_each_content_text_descrition">
+									<div class="answer_choose"><input type="radio" name="answer[17]" value="A">向太陽求救</div>
+									<div class="answer_choose"><input type="radio" name="answer[17]" value="B">希望太陽變成月亮</div>
+									<div class="answer_choose"><input type="radio" name="answer[17]" value="C">向太陽報仇</div>
+									<div class="answer_choose"><input type="radio" name="answer[17]" value="D">詢問太陽祭祀的方式</div>
+									<div class="save_btn" onclick="save_answer(17);">儲存</div>
+								</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_18" class="question_each">
+						<div class="question_each_title">
+							18. 故事中，被射傷眼睛的太陽提出了哪個要求才願意變成月亮?
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/student-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">學生</div>
+								<div class="question_each_content_text_descrition">
+									<textarea  name="answer[18]" ></textarea>
+									<div class="save_btn" onclick="save_answer(18);">儲存</div>
+								</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_19" class="question_each">
+						<div class="question_each_title">
+							19. 布農族為了感謝月亮所舉辦的祭典，接近以下哪一個類型?
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/student-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">學生</div>
+								<div class="question_each_content_text_descrition">
+									<div class="answer_choose"><input type="radio" name="answer[19]" value="A">與生命禮俗有關</div>
+									<div class="answer_choose"><input type="radio" name="answer[19]" value="B">與耕種農作物有關</div>
+									<div class="answer_choose"><input type="radio" name="answer[19]" value="C">與生命循環有關</div>
+									<div class="answer_choose"><input type="radio" name="answer[19]" value="D">與教育意義有關</div>
+									<div class="save_btn" onclick="save_answer(19);">儲存</div>
+								</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_20" class="question_each">
+						<div class="question_each_title">
+							20. 請根據矮靈祭的由來與布農族射日英雄兩個網頁完成下列表格：
+						</div>
+						<div class="question_each_content">
+							<div>
+								<div class="question_each_content_img">
+									<img src="/images/student-pic.png">
+								</div>
+								<div class="question_each_content_text">
+									<div class="question_each_content_text_position">學生</div>
+								</div>
+							</div>
+							<br>
+							<div>
+							<table>
+								<tbody>
+									<tr>
+										<td></td>
+										<td style="padding:10px;">矮靈祭<br>的由來</td>
+										<td style="padding:10px;">布農族<br>射日英雄</td>
+									</tr>
+									<tr>
+										<td style="padding:10px;">族人攻擊的對象</td>
+										<td><textarea  name="answer[20][1]" ></textarea></td>
+										<td><textarea  name="answer[20][2]" ></textarea></td>
+									</tr>
+									<tr>
+										<td style="padding:10px;">攻擊對象的反應</td>
+										<td><textarea  name="answer[20][3]" ></textarea></td>
+										<td><textarea  name="answer[20][4]" ></textarea></td>
+									</tr>
+									<tr>
+										<td style="padding:10px;">族人事後的作為</td>
+										<td><textarea  name="answer[20][5]" ></textarea></td>
+										<td><textarea  name="answer[20][6]" ></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="save_btn" onclick="save_answer(20);">儲存</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_21" class="question_each">
+						<div class="question_each_title">
+							21. 你有多喜歡「原住民文化」這個專題任務?
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/student-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">學生</div>
+								<div class="question_each_content_text_descrition">
+									<div class="answer_choose"><input type="radio" name="answer[21]" value="A">非常喜歡</div>
+									<div class="answer_choose"><input type="radio" name="answer[21]" value="B">有點喜歡</div>
+									<div class="answer_choose"><input type="radio" name="answer[21]" value="C">有點不喜歡</div>
+									<div class="answer_choose"><input type="radio" name="answer[21]" value="D">非常不喜歡</div>
+									<div class="save_btn" onclick="save_answer(21);">儲存</div>
+								</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_21_1" class="question_each">
+						<div class="question_each_title">
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/techer-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">老師</div>
+								<div class="question_each_content_text_descrition">做得很好！你已經完成了你的原住民文化研究！</div>
+							</div>
+						</div>
+						<hr class="style-one" />
+					</div>
+					<div id="q_21_2" class="question_each">
+						<div class="question_each_title">
+						</div>
+						<div class="question_each_content">
+							<div class="question_each_content_img">
+								<img src="/images/techer-pic.png">
+							</div>
+							<div class="question_each_content_text">
+								<div class="question_each_content_text_position">老師</div>
+								<div class="question_each_content_text_descrition">如果你想要結束測驗，請點選下方的「送出答案」按鈕。</div>
+								<div class="save_btn" onclick="$('#final_modal').show();$('.modal-bg').show();">送出答案</div>
 							</div>
 						</div>
 						<hr class="style-one" />
@@ -1160,9 +1484,20 @@
 					</div>
 				</div-->
 			</div>
-			<div id="no_answer_modal">
-				<div>此為必填答案唷！</div>
-				<button>確認</button>
+			<div class="modal-bg">
+				<div id="q1_modal" class="modal">
+					<div>將為您連結至正確網站…</div>
+					<button onclick="$('#q1_modal').hide();$('.modal-bg').hide();question_show('1_1');tab_change(2);">確認</button>
+				</div>
+				<div id="no_answer_modal" class="modal">
+					<div>此為必填答案唷！</div>
+					<button onclick="$('#no_answer_modal').hide();$('.modal-bg').hide();">確認</button>
+				</div>
+				<div id="final_modal" class="modal">
+					<div>作答完畢，是否要修改答案？</div>
+					<button onclick="$('#no_answer_modal').hide();">是</button>
+					<button onclick="final()">否</button>
+				</div>
 			</div>
 			<div id="question_template" class="question_block" hidden>
 				<div class="question_title">
@@ -1181,6 +1516,191 @@
 					<div>
 						<input type="radio" name="q[1]" value="D">中時電子報
 					</div>
+				</div>
+			</div>
+		</div>
+		<div id="final" class="container" hidden>
+			<div class="main_view">
+				<div class="main_view_header">
+					數位閱讀學習平台
+				</div>
+				<div class="main_view_content">
+					<label>作答結果</label>
+					<div class="timer">
+						<div>答對率
+						</br>
+							<label id="answer_rate">85%</label>
+						</div>
+					</div>
+					<div class="final_table">
+						<table>
+							<thead>
+								<tr>
+									<th style="width:60px">題號</th>
+									<th style="width:380px">作答答案</th>
+									<th style="width:380px">參考答案</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td></td>
+									<td>C</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td></td>
+									<td>A</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td></td>
+									<td>C</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td></td>
+									<td>B</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td></td>
+									<td>B</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td></td>
+									<td>大樹底部切去大半：答：大樹會承受不了矮人的重量<br>
+塗上泥巴原因：答：要欺騙矮人／矮人才會不知情爬上樹</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td></td>
+									<td>農作物欠收</td>
+								</tr>
+								<tr>
+									<td>8</td>
+									<td></td>
+									<td>A</td>
+								</tr>
+								<tr>
+									<td>9</td>
+									<td></td>
+									<td>B</td>
+								</tr>
+								<tr>
+									<td>10</td>
+									<td></td>
+									<td>C</td>
+								</tr>
+								<tr>
+									<td>11</td>
+									<td></td>
+									<td>D</td>
+								</tr>
+								<tr>
+									<td>12</td>
+									<td></td>
+									<td>芒草結：有避邪的作用<br>
+臀鈴：神聖樂器／用來闡述矮靈祭複雜的心緒</td>
+								</tr>
+								<tr>
+									<td>13</td>
+									<td></td>
+									<td>五峰鄉發生外地人與族人糾紛的事件<br>苗栗南庄也有暴力糾紛<br>酒後鬧事/毀損財物
+									</td>
+								</tr>
+								<tr>
+									<td>14</td>
+									<td></td>
+									<td>B</td>
+								</tr>
+								<tr>
+									<td>15</td>
+									<td></td>
+									<td>尊重：參加祭典中，不說謊、不與人爭吵、與人和諧、遵守部落的禁忌<br>
+不尊重：暴力糾紛、酒後鬧事/毀損財物、不注意部落的禁忌</td>
+								</tr>
+								<tr>
+									<td>16</td>
+									<td></td>
+									<td>A贊成:因為作者提出即使將攤販移至會場外，仍無法避免紛爭<br>
+B不贊成:因為作者提到族人是以開放的態度邀請外地人/因為作者的標題是以問號做結尾／因為作者最後提出希望往後參與的遊客能尊重原住民文化</td>
+								</tr>
+								<tr>
+									<td>17</td>
+									<td></td>
+									<td>C</td>
+								</tr>
+								<tr>
+									<td>18</td>
+									<td></td>
+									<td>月圓時要祭拜他</td>
+								</tr>
+								<tr>
+									<td>19</td>
+									<td></td>
+									<td>B</td>
+								</tr>
+								<tr>
+									<td>20</td>
+									<td>
+										<table>
+											<tbody>
+												<tr>
+													<td></td>
+													<td style="padding:10px;">矮靈祭<br>的由來</td>
+													<td style="padding:10px;">布農族<br>射日英雄</td>
+												</tr>
+												<tr>
+													<td style="padding:10px;">族人攻擊的對象</td>
+													<td id="ans_20_1"></td>
+													<td id="ans_20_2"></td>
+												</tr>
+												<tr>
+													<td style="padding:10px;">攻擊對象的反應</td>
+													<td id="ans_20_3"></td>
+													<td id="ans_20_4"></td>
+												</tr>
+												<tr>
+													<td style="padding:10px;">族人事後的作為</td>
+													<td id="ans_20_5"></td>
+													<td id="ans_20_6"></td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+									<td>
+									<table>
+										<tbody>
+											<tr>
+												<td></td>
+												<td style="padding:10px;">矮靈祭<br>的由來</td>
+												<td style="padding:10px;">布農族<br>射日英雄</td>
+											</tr>
+											<tr>
+												<td style="padding:10px;">族人攻擊的對象</td>
+												<td>矮人</td>
+												<td>太陽</td>
+											</tr>
+											<tr>
+												<td style="padding:10px;">攻擊對象的反應</td>
+												<td>下詛咒</td>
+												<td>變成月亮</td>
+											</tr>
+											<tr>
+												<td style="padding:10px;">族人事後的作為</td>
+												<td>舉行矮靈祭，祭悼被害死的矮靈</td>
+												<td>播種小米，依據月亮的圓缺來耕種和舉行祭祀</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<button onclick="window.location.reload(true);">回首頁</button>
 				</div>
 			</div>
 		</div>
@@ -1237,9 +1757,9 @@
 				}, 1000);
 				timer_is_start = true;
 			}
-			
 			main_change(2);
-			question_show(0);
+			setTimeout(function (){question_show(0);},2000);
+			setTimeout(function (){main_change(3);question_show(1);},5000);
 		}
 		
 		function question_no_change(num){
@@ -1252,6 +1772,18 @@
 			//num = num.toString().substr(0,1);
 			num = num -1;
 			$(".question_no div:eq("+num+")").addClass('question_no_now');
+		}
+		
+		function answer_1(ans){
+			$("[name='answer[1]']").val(ans);
+			if(ans == 'C'){
+				question_show('1_1');
+				tab_change(2);
+			}else{
+				$('#q1_modal').show();
+				$('.modal-bg').show();
+			}
+			$(".final_table > table tbody tr").eq(0).find('td').eq(1).text(ans);
 		}
 		
 		function tab_change(num){
@@ -1271,12 +1803,12 @@
 				main_change(6);
 			}
 			else if(num == 5){
-				//main_change();
+				main_change(7);
 			}
 		}
 		
 		function main_change(num){
-			$(".main_view_content > div").hide();
+			$("#app .main_view_content > div").hide();
 			$("#main_"+num).show();
 		}
 		
@@ -1301,11 +1833,177 @@
 		}
 		
 		function save_answer(num){
-			var answer_val = $('[name="answer['+num+']"]:checked').val();
-			if(answer_val == "undefined"){
-				$("#no_answer_modal").show();
+			if([2,3,4,5,8,9,10,11,14,17,19].indexOf(num) != -1){
+				var answer_val = $('[name="answer['+num+']"]:checked').val();
+				if(!answer_val){
+					$("#no_answer_modal").show();
+					$('.modal-bg').show();
+					return;
+				}else{
+					$(".final_table > table tbody tr").eq(num-1).find('td').eq(1).text(answer_val);
+				}
+			}else if([6,12,15].indexOf(num) != -1){
+				var val_1 = $('[name="answer['+num+'][1]"]').val();
+				var val_2 = $('[name="answer['+num+'][2]"]').val();
+				if(!(val_1 && val_2)){
+					$("#no_answer_modal").show();
+					$('.modal-bg').show();
+					return;
+				}else{
+					var html = "1." + val_1 + "<br><br>2." +val_2;
+					$(".final_table > table tbody tr").eq(num-1).find('td').eq(1).html(html);
+				}
 			}
-			console.log(answer_val);
+			else if([7,13,18].indexOf(num) != -1){
+				var val_1 = $('[name="answer['+num+']"]').val();
+				if(!val_1){
+					$("#no_answer_modal").show();
+					$('.modal-bg').show();
+					return;
+				}else{
+					$(".final_table > table tbody tr").eq(num-1).find('td').eq(1).text(val_1);
+				}
+			}
+			else if([16].indexOf(num) != -1){
+				var val_1 = $('[name="answer['+num+'][1]"]:checked').val();
+				var val_2 = $('[name="answer['+num+'][2]"]').val();
+				if(!(val_1 && val_2)){
+					$("#no_answer_modal").show();
+					$('.modal-bg').show();
+					return;
+				}else{
+					var html = val_1 + "<br>" +val_2;
+					$(".final_table > table tbody tr").eq(num-1).find('td').eq(1).html(html);
+				}
+			}
+			else if([20].indexOf(num) != -1){
+				var val_1 = $('[name="answer['+num+'][1]"]').val();
+				var val_2 = $('[name="answer['+num+'][2]"]').val();
+				var val_3 = $('[name="answer['+num+'][3]"]').val();
+				var val_4 = $('[name="answer['+num+'][4]"]').val();
+				var val_5 = $('[name="answer['+num+'][5]"]').val();
+				var val_6 = $('[name="answer['+num+'][6]"]').val();
+				console.log(val_1,val_2,val_3,val_4,val_5,val_6);
+				if(!(val_1 && val_2 && val_3 && val_4 && val_5 && val_6)){
+					$("#no_answer_modal").show();
+					$('.modal-bg').show();
+					return;
+				}else{
+					$("#ans_20_1").text(val_1);
+					$("#ans_20_2").text(val_2);
+					$("#ans_20_3").text(val_3);
+					$("#ans_20_4").text(val_4);
+					$("#ans_20_5").text(val_5);
+					$("#ans_20_6").text(val_6);
+				}
+			}
+			
+			
+			if(num == 2){
+				question_show('2_1');
+				//tab_change(4);
+			}
+			else if(num == 3){
+				question_show(4);
+			}
+			else if(num == 4){
+				question_show(5);
+			}
+			else if(num == 5){
+				question_show(6);
+			}
+			else if(num == 6){
+				question_show(7);
+			}
+			else if(num == 7){
+				question_show(8);
+			}
+			else if(num == 8){
+				question_show('8_1');
+			}
+			else if(num == 9){
+				question_show(10);
+			}
+			else if(num == 10){
+				question_show(11);
+			}
+			else if(num == 11){
+				question_show('11_1');
+			}
+			else if(num == 12){
+				question_show('12_1');
+			}
+			else if(num == 12){
+				question_show('12_1');
+			}
+			else if(num == 13){
+				question_show(14);
+			}
+			else if(num == 14){
+				question_show(15);
+			}
+			else if(num == 15){
+				question_show(16);
+			}
+			else if(num == 16){
+				question_show('16_1');
+			}
+			else if(num == 17){
+				question_show(18);
+			}
+			else if(num == 18){
+				question_show(19);
+			}
+			else if(num == 19){
+				question_show(20);
+			}
+			else if(num == 20){
+				question_show(21);
+			}
+			else if(num == 21){
+				question_show('21_1');
+				question_show('21_2');
+			}
+			
+			//console.log(answer_val);
 		}
+		
+		function final(){
+			$("#app").hide();
+			$("#final").show();
+			$("#final").show();
+			answer_rate_cal();
+		}
+		
+		function answer_rate_cal(){
+				var correct_ans =[];
+				correct_ans[1] = "C";
+				correct_ans[2] = "A";
+				correct_ans[3] = "C";
+				correct_ans[4] = "B";
+				correct_ans[5] = "B";
+				correct_ans[8] = "A";
+				correct_ans[9] = "B";
+				correct_ans[10] = "C";
+				correct_ans[11] = "D";
+				correct_ans[14] = "B";
+				correct_ans[17] = "C";
+				correct_ans[19] = "B";
+				
+				//console.log(correct_ans);
+				//console.log(correct_ans.length);
+				var correct = 0;
+				for(x in correct_ans){
+					var user_ans = $('[name="answer['+x+']"]:checked').val();
+					if(user_ans == correct_ans[x]){
+						correct++;
+					}
+					//console.log(x);
+					//console.log(correct_ans[x]);
+				}
+				
+				//console.log(correct/correct_ans.length+"%");
+				$("#answer_rate").text(Math.floor(correct/12*100)+"%");
+			}
 	</script>
 </html>
